@@ -170,7 +170,4 @@ class Transformer(nn.Module):
                 if show_steps:
                     print(f"Current out is: {out}")
               
-               
-                
-
             return out
