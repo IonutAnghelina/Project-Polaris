@@ -54,9 +54,9 @@ class Encoder(nn.Module):
 
         """
         
-        mask = None # We identify the padding tokens and compute the padding mask
+        mask = None 
         
-        padding_mask = (x!=0).int()
+        padding_mask = (x!=0).int() # We identify the padding tokens and compute the padding mask
         
         batch_size = x.shape[0]
         

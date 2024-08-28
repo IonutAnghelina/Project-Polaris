@@ -1,1 +1,2 @@
-Transformer\__pycache__\*
+./Transformer/__pycache__
+./Transformer/test.py
