@@ -48,6 +48,13 @@ class MultiHeadAttention(nn.Module):
         padding_mask - [batch_size, query_seq_length, seq_length]
 
         The padding mask which will be used in order for padding tokens to not attend to other actual tokens
+
+        Returns
+
+        val - [batch_size, query_seq_len, embedding_dim] 
+
+        The new embeddings refined through attention
+
         """
 
         batch_size = key.size(0)
