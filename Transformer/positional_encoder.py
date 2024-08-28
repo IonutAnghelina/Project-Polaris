@@ -52,9 +52,11 @@ class PositionalEncoder(nn.Module):
         """
         Receives:
 
-        x - torch.Tensor([seq_size, embedding_dim])
+        x - torch.Tensor([batch_size, seq_size, embedding_dim])
 
         The positionalEmbeddings tensor is added to x in order to enrich it with positional information
+
+        Returns a new tensor of shape [batch_size, seq_size, embedding_dim]
         """
         pos_emb = self.positionalEmbeddings.unsqueeze(0) 
 
