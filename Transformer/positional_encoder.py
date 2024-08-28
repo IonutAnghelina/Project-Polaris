@@ -34,11 +34,18 @@ class PositionalEncoder(nn.Module):
 
         self.positionalEmbeddings = torch.zeros(seq_size, embedding_dim)
 
-        for pos in range(self.seq_size):
-            for i in range(0,self.embedding_dim,2):
-                self.positionalEmbeddings[pos,i] = np.sin(pos/((10000)**(2*i/self.embedding_dim)))
-            for i in range(1,self.embedding_dim,2):
-                self.positionalEmbeddings[pos,i] = np.cos(pos/((10000)**(2*i/self.embedding_dim)))
+        position = np.arange(seq_size).reshape(-1, 1)
+
+       
+        dimension = np.arange(embedding_dim)
+
+        angle_rates = 1 / np.power(10000, (2 * (dimension // 2)) / embedding_dim)
+
+
+        angles = position * angle_rates 
+
+        self.positionalEmbeddings[:, 0::2] = torch.tensor(np.sin(angles[:, 0::2]), dtype=torch.float32)
+        self.positionalEmbeddings[:, 1::2] = torch.tensor(np.cos(angles[:, 1::2]), dtype=torch.float32)
 
     def forward(self, x : torch.Tensor) -> torch.Tensor:
 
