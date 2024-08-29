@@ -46,7 +46,9 @@ class PositionalEncoder(nn.Module):
 
         self.positionalEmbeddings[:, 0::2] = torch.tensor(np.sin(angles[:, 0::2]), dtype=torch.float32)
         self.positionalEmbeddings[:, 1::2] = torch.tensor(np.cos(angles[:, 1::2]), dtype=torch.float32)
-
+        
+        
+        
     def forward(self, x : torch.Tensor) -> torch.Tensor:
 
         """
@@ -58,7 +60,7 @@ class PositionalEncoder(nn.Module):
 
         Returns a new tensor of shape [batch_size, seq_size, embedding_dim]
         """
-        pos_emb = self.positionalEmbeddings.unsqueeze(0) 
+        pos_emb = self.positionalEmbeddings.unsqueeze(0).to(x.get_device())
 
         return x + pos_emb[:, :x.size(1), :]
 
