@@ -6,4 +6,5 @@
 ./GPT/.ipynb_checkpoints
 ./Transformer/.ipynb_checkpoints
 ./Transformer/ipynb_checkpoints
-./Transformer/train.ipynb
+./Transformer/train.ipy
+./Transformer/checkpoints
