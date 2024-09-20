@@ -120,7 +120,7 @@ class Transformer(nn.Module):
         
         return self.decoder(target, encoder_output, target_mask, cross_mask)
 
-    def decode(self, target_seq_len : int, source : torch.Tensor, show_steps = False, target : torch.Tensor = torch.Tensor([[1]])) -> torch.Tensor:
+    def decode(self, target_seq_len : int, source : torch.Tensor, show_steps = False, target : torch.Tensor = torch.Tensor([[32100]])) -> torch.Tensor:
         
         """
         Uses the pretrained transformer for a particular instance
@@ -142,7 +142,7 @@ class Transformer(nn.Module):
             
             batch_size = source.shape[0]
 
-            output_labels = torch.ones(batch_size, 1) #The <SOS> token
+            output_labels = torch.full((batch_size, 1), 32100) #The <SOS> token
             
             output_labels = F.pad(output_labels, (0, target_seq_len - current_length), value=0).int()
             

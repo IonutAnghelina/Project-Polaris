@@ -5,7 +5,7 @@ import torch.nn.functional as F
 
 class EmbeddingLayer(nn.Module):
 
-    def __init__(self, vocab_size : int, embed_dim : int):
+    def __init__(self, vocab_size : int, embed_dim : int, padding_idx : int = 0):
 
         """
         This layer converts each token, represented by an integer
@@ -19,7 +19,7 @@ class EmbeddingLayer(nn.Module):
         """
         super(EmbeddingLayer, self).__init__()
 
-        self.model = nn.Embedding(vocab_size, embed_dim)
+        self.model = nn.Embedding(vocab_size, embed_dim, padding_idx = padding_idx)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
 
@@ -32,4 +32,7 @@ class EmbeddingLayer(nn.Module):
 
         Returns a tensor of shape [batch_size, seq_length, embedding_dim]
         """
+        
+        x = x.to(self.model.weight.device)
+
         return self.model(x)

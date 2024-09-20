@@ -60,7 +60,7 @@ class PositionalEncoder(nn.Module):
 
         Returns a new tensor of shape [batch_size, seq_size, embedding_dim]
         """
-        pos_emb = self.positionalEmbeddings.unsqueeze(0).to(x.get_device())
+        pos_emb = self.positionalEmbeddings.unsqueeze(0).to(x.device)
 
         return x + pos_emb[:, :x.size(1), :]
 

@@ -85,10 +85,10 @@ class MultiHeadAttention(nn.Module):
         if mask is not None:
             attention_mask[mask == 0] = -float('inf')
     
-        if padding_mask is not None:
-            attention_mask[padding_mask == 0] = -float('inf')
+        #if padding_mask is not None:
+        #    attention_mask[padding_mask == 0] = -float('inf')
         
-        attention_mask = attention_mask / np.sqrt(self.split_size) # The result will be [batch_size, no_heads, seq_len_query, seq_len]
+        attention_mask = attention_mask / ((self.split_size)**0.5) # The result will be [batch_size, no_heads, seq_len_query, seq_len]
 
         attention_mask = F.softmax(attention_mask, dim = -1) #Normalizing on the columns
         

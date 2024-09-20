@@ -10,7 +10,7 @@ class DecoderBlock(nn.Module):
     def __init__(self, embedding_dim : int = 512, no_heads : int = 8 , expansion_factor : int = 4, p_dropout : int = 0.1):
 
         """
-        This layer passes the (query, key, value) set through an encoder block
+        This layer passes the (query, key, value) set through a decoder block
 
         The constructor receives as input
 
