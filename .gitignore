@@ -1,11 +1,14 @@
-./Transformer/__pycache__
-./Transformer/test.py
-./Train.ipynb
-./Kanye West Lyrics.txt
-./GPT/__pycache__
-./GPT/.ipynb_checkpoints
-./Transformer/.ipynb_checkpoints
-./Transformer/ipynb_checkpoints
-./Transformer/train.ipy
-./Transformer/checkpoints
-./Transformer/train.ipynb
+
+Transformer/__pycache__/
+GPT/__pycache__/
+
+Transformer/test.py
+Transformer/train.ipy
+
+GPT/.ipynb_checkpoints/
+Transformer/.ipynb_checkpoints/
+
+Train.ipynb
+Kanye West Lyrics.txt
+
+Transformer/checkpoints/
