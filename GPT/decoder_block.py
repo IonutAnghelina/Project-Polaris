@@ -31,8 +31,8 @@ class DecoderBlock(nn.Module):
         self.secondLayerNorm = nn.LayerNorm(self.embedding_dim)
         self.fc = nn.Sequential(
             nn.Linear(self.embedding_dim, self.embedding_dim * self.expansion_factor),
-            nn.Linear(self.embedding_dim * self.expansion_factor, self.embedding_dim),
             nn.GELU(),
+            nn.Linear(self.embedding_dim * self.expansion_factor, self.embedding_dim),
             nn.Dropout(self.dropout_rate)   
         )
         
